@@ -1,4 +1,4 @@
-package ex3;
+package ex4;
 
 // Original source code: https://gist.github.com/amadamala/3cdd53cb5a6b1c1df540981ab0245479
 // Modified by Fernando Porrino Serrano for academic purposes.
@@ -59,7 +59,7 @@ public class HashTable {
     }
 
 
-    public void put(String key, String value) {
+    public void put(String key, Object value) {
         int hash = getHash(key);
         final HashEntry hashEntry = new HashEntry(key, value);
 
@@ -81,7 +81,8 @@ public class HashTable {
      * @param key La clau de l'element a trobar.
      * @return El propi element que es busca (null si no s'ha trobat).
      */
-    public String get(String key) {
+    //public String get(String key) {
+    public Object get (String key){
         HashEntry entry = encontrarKeyExistente(key);
         if(entry!=null){
             return entry.value;
@@ -113,13 +114,13 @@ public class HashTable {
 
     private class HashEntry {
         String key;
-        String value;
+        Object value;
 
         // Linked list of same hash entries.
         HashEntry next;
         HashEntry prev;
 
-        public HashEntry(String key, String value) {
+        public HashEntry(String key, Object value) {
             this.key = key;
             this.value = value;
             this.next = null;
