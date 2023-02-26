@@ -31,13 +31,13 @@ public class HashTable {
         int hash = getHash(key);
         final HashEntry hashEntry = new HashEntry(key, value);
 
-        if(entries[hash] == null) {
+        if(entries[hash] == null) { //Si es null lo añade
             entries[hash] = hashEntry;
             ITEMS++;
         }else{
             HashEntry temp = entries[hash];
-            while(temp != null){
-                if (temp.key.equals(key)){
+            while(temp != null){ //Mientras esté ocupado buscará una posición null
+                if (temp.key.equals(key)){ //Si coincide con el que buscamos, lo sobreescribe
                     temp.value = value;
                     return;
                 }
@@ -46,7 +46,7 @@ public class HashTable {
 
             temp = entries[hash];
 
-            while (temp.next != null){
+            while (temp.next != null){ //Busca posición de temp null y una vez la encuentra lo actualiza los valores.
                 temp = temp.next;
             }
             temp.next = hashEntry;
@@ -62,13 +62,13 @@ public class HashTable {
      */
     public String get(String key) {
         int hash = getHash(key);
-        if(entries[hash] != null) {
+        if(entries[hash] != null) { //Si la posición que quiere conseguir es diferente de null entra sino devuelve null
             HashEntry temp = entries[hash];
 
             //while(!temp.key.equals(key))
                 //temp = temp.next;
-            while(temp!=null){
-                if(temp.key.equals(key)){
+            while(temp!=null){ //Mientras la posición de temp no sea null
+                if(temp.key.equals(key)){ //cuando coincide la key devolvemos lo que piden.
                     return temp.value;
                 }
                 temp = temp.next;
@@ -84,17 +84,18 @@ public class HashTable {
      */
     public void drop(String key) {
         int hash = getHash(key);
-        if(entries[hash] != null) {
+        if(entries[hash] != null) { //Entramos si lo que queremos borrar es diferente de null
             HashEntry temp = entries[hash];
-            while(temp!=null && !temp.key.equals(key))
+            while(temp!=null && !temp.key.equals(key)) //Buscamos la clave que queremos eliminar
                 temp = temp.next;
-            if(temp!=null){
+            if(temp!=null){ //Entramos aquí si temp es diferente de null
                 if(temp.prev == null){
+                    //entries[hash] = null;
                     entries[hash] = temp.next;//esborrar element únic (no col·lissió)
                 }
                 else{
-                    if(temp.next != null) temp.next.prev = temp.prev;   //esborrem temp, per tant actualitzem l'anterior al següent
-                    temp.prev.next = temp.next;                         //esborrem temp, per tant actualitzem el següent de l'anterior
+                    if(temp.next != null) temp.next.prev = temp.prev;    //esborrem temp, per tant actualitzem l'anterior al següent
+                    temp.prev.next = temp.next;       //esborrem temp, per tant actualitzem el següent de l'anterior
                 }
                 ITEMS--;
             }
