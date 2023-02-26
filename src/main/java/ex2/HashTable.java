@@ -33,7 +33,7 @@ public class HashTable {
 
         if(entries[hash] == null) {
             entries[hash] = hashEntry;
-            //ITEMS++;
+            ITEMS++;
         }else{
             HashEntry temp = entries[hash];
             while(temp != null){
