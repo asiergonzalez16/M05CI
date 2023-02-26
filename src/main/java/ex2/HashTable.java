@@ -33,7 +33,7 @@ public class HashTable {
 
         if(entries[hash] == null) { //Si es null lo añade
             entries[hash] = hashEntry;
-            ITEMS++;
+            //ITEMS++;
         }else{
             HashEntry temp = entries[hash];
             while(temp != null){ //Mientras esté ocupado buscará una posición null
