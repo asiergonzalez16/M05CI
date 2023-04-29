@@ -14,7 +14,7 @@ public class TestEx2 {
         hashtable.put(clave,valor);
         int numero = clave.hashCode()%16;
         System.out.println(hashtable.toString());
-        String bucket = "\n bucket["+numero+"] = ["+clave+", "+valor+"]";
+        String bucket = "\n bucket[ "+numero+"] = ["+clave+", "+valor+"]";
         Assertions.assertEquals(bucket,hashtable.toString());
         int expected = 1;
         Assertions.assertEquals(expected,hashtable.count());
@@ -162,7 +162,7 @@ public class TestEx2 {
         hashtable.put("12", "Elemento 2");
         hashtable.put("23", "Elemento 3");
         hashtable.put("23", "Elemento 4");
-        System.out.println(hashtable.toString());
+        //System.out.println(hashtable.toString());
         String bucket = "Elemento 4";
         Assertions.assertEquals(bucket,hashtable.get("23").toString());
     }
