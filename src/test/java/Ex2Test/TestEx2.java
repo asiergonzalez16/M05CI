@@ -30,7 +30,7 @@ public class TestEx2 {
         int numero1 = clave.hashCode()%16;
         int numero2 = clave2.hashCode()%16;
         System.out.println(hashtable.toString());
-        String bucket = "\n bucket["+numero1+"] = ["+clave+", "+valor+"]\n bucket["+numero2+"] = ["+clave2+", "+valor2+"]";
+        String bucket = "\n bucket["+numero1+"] = [ "+clave+", "+valor+"]\n bucket["+numero2+"] = ["+clave2+", "+valor2+"]";
         Assertions.assertEquals(bucket,hashtable.toString());
 
         int expected = 2;
