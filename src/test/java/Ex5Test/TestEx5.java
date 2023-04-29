@@ -13,12 +13,12 @@ public class TestEx5 {
         ex5.HashTable hashtable = new ex5.HashTable();
         hashtable.put(clave,valor);
         hashtable.put("12","holaaa");
-        //hashtable.put("23","adios");
+        hashtable.put("23","adios");
         int numero = clave.hashCode()%16;
         System.out.println(hashtable.toString());
-        Assertions.assertEquals("\n bucket[1] = [12, holaaa]\n" +" bucket[17] = ["+clave+", "+valor+"]",hashtable.toString());
-        //Assertions.assertEquals("\n" +" bucket[1] = [1, hola]\n" +" bucket[17] = [23, adios]\n" +" bucket[33] = [12, holaaa]",hashtable.toString());
-        int expectedSize = 32;
+        //Assertions.assertEquals("\n bucket[1] = [12, holaaa]\n" +" bucket[17] = ["+clave+", "+valor+"]",hashtable.toString());
+        Assertions.assertEquals("\n" +" bucket[1] = [1, hola]\n" +" bucket[17] = [23, adios]\n" +" bucket[33] = [12, holaaa]",hashtable.toString());
+        int expectedSize = 64;
         System.out.println(hashtable.size());
         Assertions.assertEquals(expectedSize,hashtable.size());
     }

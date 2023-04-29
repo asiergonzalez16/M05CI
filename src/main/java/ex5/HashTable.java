@@ -42,7 +42,7 @@ public class HashTable {
         ++ITEMS;
     }
     private void crearnuevatabla() {
-        SIZE = size() + 16;
+        SIZE = size() * 2;
         HashEntry[] newEntries = new HashEntry[size()];
 
         for (HashEntry entry : entries) {
