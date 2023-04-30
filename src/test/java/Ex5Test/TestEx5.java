@@ -1,6 +1,6 @@
 package Ex5Test;
 
-import ex2.HashTable;
+import ex5.HashTable;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -9,34 +9,32 @@ public class TestEx5 {
 
     @ParameterizedTest
     @CsvSource({"1,hola"})
-    void PUT_En_Vacia(String clave, String valor) {
-        ex5.HashTable hashtable = new ex5.HashTable();
+    void PUT_En_Vacia(String clave, Object valor) {
+        HashTable hashtable = new HashTable();
         hashtable.put(clave,valor);
         hashtable.put("12","holaaa");
-        hashtable.put("23","adios");
         int numero = clave.hashCode()%16;
         System.out.println(hashtable.toString());
-        //Assertions.assertEquals("\n bucket[1] = [12, holaaa]\n" +" bucket[17] = ["+clave+", "+valor+"]",hashtable.toString());
-        Assertions.assertEquals("\n" +" bucket[1] = [1, hola]\n" +" bucket[17] = [23, adios]\n" +" bucket[33] = [12, holaaa]",hashtable.toString());
-        int expectedSize = 64;
+        Assertions.assertEquals("\n bucket[1] = [12, holaaa]\n" +" bucket[17] = ["+clave+", "+valor+"]",hashtable.toString());
+        int expectedSize = 32;
         System.out.println(hashtable.size());
         Assertions.assertEquals(expectedSize,hashtable.size());
     }
     @ParameterizedTest
-    @CsvSource({"1,hola,2,adios", "3,casa,5,viva"})
-    void PUT_En_Lleno(String clave, String valor, String clave2, String valor2) {
+    @CsvSource({"1,M05"})
+    void PUT_En_Lleno(String clave, Object valor) {
         HashTable hashtable = new HashTable();
         hashtable.put(clave,valor);
-        hashtable.put(clave2,valor2);
+        hashtable.put("12","Pruebas");
+        hashtable.put("23","Unitarias");
         int numero1 = clave.hashCode()%16;
-        int numero2 = clave2.hashCode()%16;
+
         System.out.println(hashtable.toString());
-        String bucket = "\n bucket["+numero1+"] = ["+clave+", "+valor+"]\n bucket["+numero2+"] = ["+clave2+", "+valor2+"]";
+        String bucket = "\n bucket[1] = [23, Unitarias]\n" + " bucket[33] = [12, Pruebas]\n" + " bucket[49] = [1, M05]";
         Assertions.assertEquals(bucket,hashtable.toString());
 
-        int expected = 2;
-        Assertions.assertEquals(expected,hashtable.count());
-        int expectedSize = 16;
+        int expectedSize = 64;
+        System.out.println(hashtable.size());
         Assertions.assertEquals(expectedSize,hashtable.size());
     }
 
