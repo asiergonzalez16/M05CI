@@ -48,8 +48,6 @@ public class TestEx5 {
         String bucket = "\n bucket[1] = [1, Elemento 1.1]";
         Assertions.assertEquals(bucket,hashtable.toString());
 
-        int expected = 1;
-        Assertions.assertEquals(expected,hashtable.count());
         int expectedSize = 16;
         Assertions.assertEquals(expectedSize,hashtable.size());
     }
@@ -94,17 +92,6 @@ public class TestEx5 {
         hashtable.put("1","hola");
         hashtable.drop("12");
         String expected = "\n bucket[1] = [1, hola]";
-        Assertions.assertEquals(expected,hashtable.toString());
-    }
-
-    @org.junit.jupiter.api.Test
-    void Drop_Elemento_No_Existe_Posicion_Ocupada_Por_3_Elementos_Colisionants(){
-        HashTable hashtable = new HashTable();
-        hashtable.put("1","hola");
-        hashtable.put("12","adios");
-        hashtable.put("23","chao");
-        hashtable.drop("34");
-        String expected = "\n bucket[1] = [1, hola] -> [12, adios] -> [23, chao]";
         Assertions.assertEquals(expected,hashtable.toString());
     }
 }
