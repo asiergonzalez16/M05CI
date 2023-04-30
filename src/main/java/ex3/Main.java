@@ -1,7 +1,5 @@
 package ex3;
 
-import ex2.HashTable;
-
 public class Main {
 
     //He hecho refracció de clase
